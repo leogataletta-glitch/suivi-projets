@@ -112,5 +112,28 @@
       "couleur": "#8a5a12",
       "journal": []
     }
+  ],
+  "miseAJour": [
+    {
+      "id": "2026-10-19-prio",
+      "type": "priorite",
+      "date": "2026-10-19",
+      "texte": "Terminer les demandes du secrétariat",
+      "projet": "gfc"
+    },
+    {
+      "id": "2026-10-19-gfc-tache",
+      "type": "tache",
+      "projet": "gfc",
+      "texte": "Terminer les demandes du secrétariat",
+      "date": "2026-10-19"
+    },
+    {
+      "id": "2026-10-19-gfc-next",
+      "type": "champ",
+      "projet": "gfc",
+      "champ": "prochaine",
+      "valeur": "Terminer les demandes du secrétariat"
+    }
   ]
 }
