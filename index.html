@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Suivi des projets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef2f1;--paper:#fff;--ink:#1d3237;--muted:#56696d;--soft:#7a8b8e;--line:#dbe3e2;--green:#2f6b5a;--green-soft:#e2efe9;--blue:#1d5a80;--blue-soft:#e3edf5;--amber:#8a5a12;--amber-soft:#f6ecd9;--red:#9b3434;--red-soft:#f7e3e3;--violet:#4a4a8a;--violet-soft:#e9e8f4}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#121b1d;--paper:#1b2629;--ink:#e3ecec;--muted:#a6b5b7;--soft:#8a9a9c;--line:#2c3a3d;--green:#7fc2a8;--green-soft:#1f3830;--blue:#8cbde0;--blue-soft:#1c2f3d;--amber:#e3b56a;--amber-soft:#3a2f1b;--red:#e59a9a;--red-soft:#3d2222;--violet:#b4b4ea;--violet-soft:#2a2a42}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 Inter,Arial,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none}
+:focus-visible{outline:3px solid #7fb0a0;outline-offset:2px}
+.wrap{max-width:1240px;margin:auto;padding:28px 24px 60px}
+header{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+h1{font-size:30px;font-weight:600;letter-spacing:-.02em;margin:0}.sub{color:var(--muted);font-size:14px;margin-top:4px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:99px;background:var(--paper);border:1px solid var(--line);font-size:14px;font-weight:500}.btn:hover{border-color:var(--soft)}
+.btn.primary{background:var(--green);border-color:var(--green);color:#fff}.btn.danger{color:var(--red)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px 18px}.stat b{display:block;font-size:26px;font-weight:600}.stat span{font-size:13px;color:var(--muted)}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.bar input,.bar select{padding:9px 14px;border-radius:12px;border:1px solid var(--line);background:var(--paper);min-width:0}.bar input{flex:1;min-width:180px}
+.tabs{display:flex;background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:3px}.tabs button{padding:6px 14px;border-radius:99px;font-size:13px;font-weight:500;color:var(--muted)}.tabs button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.card-top{display:flex;justify-content:space-between;gap:10px;align-items:start}.card h2{font-size:18px;font-weight:600;margin:0;line-height:1.3}.partners{font-size:13px;color:var(--muted);margin-top:3px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px;white-space:nowrap}.pill:before{content:'';width:7px;height:7px;border-radius:50%;background:currentColor}
+.s-idee{background:var(--violet-soft);color:var(--violet)}.s-redaction{background:var(--blue-soft);color:var(--blue)}.s-soumis{background:var(--amber-soft);color:var(--amber)}.s-finalisation{background:var(--amber-soft);color:var(--amber)}.s-encours{background:var(--green-soft);color:var(--green)}.s-pause{background:var(--line);color:var(--muted)}.s-clos{background:var(--line);color:var(--muted)}
+.resume{font-size:14px;color:var(--muted)}
+.next{font-size:14px;background:var(--bg);border-radius:12px;padding:10px 12px}.next small{display:block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+.due{font-size:13px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.due .late{color:var(--red);font-weight:600}.due .soon{color:var(--amber);font-weight:600}
+.prog{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted)}.prog div{flex:1;height:6px;border-radius:4px;background:var(--line);overflow:hidden}.prog i{display:block;height:100%;background:var(--green);border-radius:4px}
+.tasks{list-style:none;margin:0;padding:0;display:grid;gap:4px}.tasks label{display:flex;gap:10px;align-items:start;font-size:14px;cursor:pointer;padding:3px 0}.tasks input{margin-top:4px;accent-color:var(--green)}.tasks .done{color:var(--soft);text-decoration:line-through}
+.addtask{display:flex;gap:6px}.addtask input{flex:1;padding:7px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);font-size:13px}
+.card-foot{display:flex;gap:6px;justify-content:flex-end;margin-top:auto;padding-top:4px}.card-foot .btn{padding:6px 12px;font-size:13px}
+.hi{border-left:4px solid var(--red)}
+.timeline{display:grid;gap:10px}.row{display:grid;grid-template-columns:120px 1fr auto;gap:16px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 18px}.row .d{font-weight:600}.row small{display:block;color:var(--muted);font-size:13px}
+.empty{color:var(--muted);text-align:center;padding:40px}
+dialog{border:0;border-radius:20px;padding:26px;width:min(620px,calc(100% - 24px));background:var(--paper);color:var(--ink);box-shadow:0 30px 80px #0005}dialog::backdrop{background:#0d1d2266;backdrop-filter:blur(3px)}
+dialog h3{margin:0 0 16px;font-size:20px}.f{display:grid;gap:5px;margin-bottom:12px}.f label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}.f input,.f select,.f textarea{padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg)}.f textarea{min-height:80px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.dlg-foot{display:flex;justify-content:space-between;gap:8px;margin-top:8px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:99px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}.toast.on{opacity:1}
+.note{font-size:12px;color:var(--soft);margin-top:26px}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}.two{grid-template-columns:1fr}h1{font-size:25px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div><h1>Suivi des projets</h1><div class="sub">PNUE Haïti · mis à jour <span id="saved">jamais</span></div></div>
+<div class="actions"><button class="btn primary" id="add">+ Nouveau projet</button><button class="btn" id="export">Exporter</button><button class="btn" id="import">Importer</button><input type="file" id="file" accept="application/json" hidden></div></header>
+<section class="stats" aria-label="Résumé"><div class="stat"><b id="n-actifs">0</b><span>projets actifs</span></div><div class="stat"><b id="n-haute">0</b><span>priorité haute</span></div><div class="stat"><b id="n-30">0</b><span>échéances sous 30 jours</span></div><div class="stat"><b id="n-taches">0</b><span>tâches restantes</span></div></section>
+<div class="bar"><input id="q" type="search" placeholder="Rechercher un projet, un partenaire…" aria-label="Rechercher"><select id="fs" aria-label="Filtrer par statut"><option value="">Tous les statuts</option></select><div class="tabs" role="group" aria-label="Vue"><button data-v="cartes" aria-pressed="true">Cartes</button><button data-v="echeancier" aria-pressed="false">Échéancier</button></div></div>
+<main id="view"></main>
+<p class="note">Les modifications sont enregistrées dans ce navigateur. Utilisez Exporter pour garder une copie ou la transférer sur un autre appareil.</p>
+</div>
+<dialog id="dlg"><form method="dialog" id="form"><h3 id="dlg-title">Projet</h3>
+<div class="f"><label for="p-nom">Nom</label><input id="p-nom" required></div>
+<div class="f"><label for="p-part">Partenaires, bailleur, zone</label><input id="p-part"></div>
+<div class="two"><div class="f"><label for="p-statut">Statut</label><select id="p-statut"></select></div><div class="f"><label for="p-prio">Priorité</label><select id="p-prio"><option value="haute">Haute</option><option value="moyenne">Moyenne</option><option value="basse">Basse</option></select></div></div>
+<div class="f"><label for="p-resume">Résumé</label><textarea id="p-resume"></textarea></div>
+<div class="f"><label for="p-next">Prochaine étape</label><input id="p-next"></div>
+<div class="two"><div class="f"><label for="p-ech">Échéance</label><input id="p-ech" type="date"></div><div class="f"><label for="p-echl">Objet de l'échéance</label><input id="p-echl"></div></div>
+<div class="f"><label for="p-notes">Notes</label><textarea id="p-notes"></textarea></div>
+<div class="dlg-foot"><button type="button" class="btn danger" id="del">Supprimer</button><span style="display:flex;gap:8px"><button type="button" class="btn" id="cancel">Annuler</button><button class="btn primary" id="save" value="ok">Enregistrer</button></span></div>
+</form></dialog>
+<dialog id="confirm"><h3 id="c-msg">Confirmer ?</h3><div class="dlg-foot"><span></span><span style="display:flex;gap:8px"><button class="btn" id="c-no">Annuler</button><button class="btn primary" id="c-yes" style="background:var(--red);border-color:var(--red)">Supprimer</button></span></div></dialog>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const STATUTS={idee:'Idée',redaction:'En rédaction',soumis:'Soumis',finalisation:'En finalisation',encours:'En cours',pause:'En pause',clos:'Clos'};
+const KEY='suivi-projets-v1';let data={projets:[]},vue='cartes',editing=null;
+const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function load(){try{const s=localStorage.getItem(KEY);if(s)return JSON.parse(s)}catch(e){}return null}
+function save(msg){data.maj=new Date().toISOString();try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){}stamp();render();if(msg)toast(msg)}
+function stamp(){$('#saved').textContent=data.maj?new Date(data.maj).toLocaleString('fr-FR',{dateStyle:'medium',timeStyle:'short'}):'jamais'}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('on'),1800)}
+const days=d=>d?Math.ceil((new Date(d+'T00:00:00')-new Date(new Date().toDateString()))/864e5):null;
+function dueHtml(p){const n=days(p.echeance);if(n===null)return'';const f=new Date(p.echeance+'T00:00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});const cls=n<0?'late':n<=14?'soon':'';const txt=n<0?`en retard de ${-n} j`:n===0?"aujourd'hui":`dans ${n} j`;return `<div class="due">Échéance : ${esc(f)} <span class="${cls}">${txt}</span></div>${p.echeanceLabel?`<div class="due" style="color:var(--muted)">${esc(p.echeanceLabel)}</div>`:''}`}
+function filtered(){const q=$('#q').value.trim().toLowerCase(),fs=$('#fs').value;return data.projets.filter(p=>(!fs||p.statut===fs)&&(!q||[p.nom,p.partenaires,p.resume,p.prochaine,p.notes].join(' ').toLowerCase().includes(q)))}
+function stats(){const act=data.projets.filter(p=>!['clos','pause'].includes(p.statut));$('#n-actifs').textContent=act.length;$('#n-haute').textContent=act.filter(p=>p.priorite==='haute').length;$('#n-30').textContent=act.filter(p=>{const n=days(p.echeance);return n!==null&&n>=0&&n<=30}).length;$('#n-taches').textContent=act.reduce((s,p)=>s+p.taches.filter(t=>!t.f).length,0)}
+function render(){stats();const list=filtered(),v=$('#view');if(!list.length){v.innerHTML='<p class="empty">Aucun projet ne correspond.</p>';return}
+if(vue==='echeancier'){const rows=[...list].sort((a,b)=>(a.echeance||'9999').localeCompare(b.echeance||'9999'));v.innerHTML='<div class="timeline">'+rows.map(p=>{const n=days(p.echeance);return `<div class="row"><div class="d">${p.echeance?new Date(p.echeance+'T00:00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'}):'Sans date'}<small>${n===null?'':n<0?'en retard':n===0?"aujourd'hui":'dans '+n+' j'}</small></div><div>${esc(p.nom)}<small>${esc(p.echeanceLabel||p.prochaine||'')}</small></div><span class="pill s-${p.statut}">${STATUTS[p.statut]}</span></div>`}).join('')+'</div>';return}
+v.innerHTML='<div class="grid">'+list.map(p=>{const done=p.taches.filter(t=>t.f).length,tot=p.taches.length,pc=tot?Math.round(done/tot*100):0;return `<article class="card ${p.priorite==='haute'?'hi':''}" data-id="${esc(p.id)}"><div class="card-top"><div><h2>${esc(p.nom)}</h2><div class="partners">${esc(p.partenaires)}</div></div><span class="pill s-${p.statut}">${STATUTS[p.statut]}</span></div>${p.resume?`<p class="resume" style="margin:0">${esc(p.resume)}</p>`:''}${p.prochaine?`<div class="next"><small>Prochaine étape</small>${esc(p.prochaine)}</div>`:''}${dueHtml(p)}${tot?`<div class="prog"><div><i style="width:${pc}%"></i></div>${done}/${tot}</div>`:''}<ul class="tasks">${p.taches.map((t,i)=>`<li><label><input type="checkbox" data-t="${i}" ${t.f?'checked':''}><span class="${t.f?'done':''}">${esc(t.t)}</span></label></li>`).join('')}</ul><form class="addtask"><input placeholder="Ajouter une tâche" aria-label="Nouvelle tâche pour ${esc(p.nom)}"><button class="btn" style="padding:6px 12px">+</button></form>${p.notes?`<div class="next"><small>Notes</small>${esc(p.notes).replace(/\n/g,'<br>')}</div>`:''}<div class="card-foot"><button class="btn" data-a="edit">Modifier</button></div></article>`}).join('')+'</div>';
+v.querySelectorAll('.card').forEach(c=>{const p=data.projets.find(x=>x.id===c.dataset.id);c.querySelectorAll('[data-t]').forEach(cb=>cb.onchange=()=>{p.taches[+cb.dataset.t].f=cb.checked;save()});c.querySelector('.addtask').onsubmit=e=>{e.preventDefault();const i=e.target.querySelector('input');if(i.value.trim()){p.taches.push({t:i.value.trim(),f:false});save('Tâche ajoutée')}};c.querySelector('[data-a=edit]').onclick=()=>openForm(p)})}
+function openForm(p){editing=p;$('#dlg-title').textContent=p?'Modifier le projet':'Nouveau projet';$('#del').style.visibility=p?'visible':'hidden';const g=p||{statut:'idee',priorite:'moyenne'};$('#p-nom').value=g.nom||'';$('#p-part').value=g.partenaires||'';$('#p-statut').value=g.statut;$('#p-prio').value=g.priorite;$('#p-resume').value=g.resume||'';$('#p-next').value=g.prochaine||'';$('#p-ech').value=g.echeance||'';$('#p-echl').value=g.echeanceLabel||'';$('#p-notes').value=g.notes||'';$('#dlg').showModal();$('#p-nom').focus()}
+$('#form').onsubmit=e=>{e.preventDefault();const p=editing||{id:'p'+Date.now().toString(36),taches:[]};Object.assign(p,{nom:$('#p-nom').value.trim(),partenaires:$('#p-part').value.trim(),statut:$('#p-statut').value,priorite:$('#p-prio').value,resume:$('#p-resume').value.trim(),prochaine:$('#p-next').value.trim(),echeance:$('#p-ech').value,echeanceLabel:$('#p-echl').value.trim(),notes:$('#p-notes').value.trim()});if(!editing)data.projets.unshift(p);$('#dlg').close();save(editing?'Projet mis à jour':'Projet ajouté')};
+$('#cancel').onclick=()=>$('#dlg').close();
+$('#del').onclick=()=>{if(!editing)return;$('#c-msg').textContent=`Supprimer « ${editing.nom} » ?`;$('#dlg').close();$('#confirm').showModal()};
+$('#c-no').onclick=()=>$('#confirm').close();$('#c-yes').onclick=()=>{data.projets=data.projets.filter(x=>x!==editing);$('#confirm').close();save('Projet supprimé')};
+$('#add').onclick=()=>openForm(null);
+$('#export').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='suivi-projets-'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(a.href)};
+$('#import').onclick=()=>$('#file').click();$('#file').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const d=JSON.parse(await f.text());if(!Array.isArray(d.projets))throw 0;data=d;save('Import réussi')}catch(err){toast('Fichier non reconnu')}e.target.value=''};
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{vue=b.dataset.v;document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-pressed',x===b));render()});
+$('#q').oninput=render;$('#fs').onchange=render;
+const opts=Object.entries(STATUTS).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');$('#fs').insertAdjacentHTML('beforeend',opts);$('#p-statut').innerHTML=opts;
+(async()=>{const l=load();if(l&&Array.isArray(l.projets)){data=l}else{try{const r=await fetch('data.json',{cache:'no-store'});data=await r.json()}catch(e){data={projets:[]}}}stamp();render()})();
+</script>
+</body>
+</html>

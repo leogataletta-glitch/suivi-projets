@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "projets": [
+    {
+      "id": "untfhs",
+      "nom": "Sécurité humaine · UNTFHS 2026",
+      "partenaires": "PNUE (chef de file), FAO, OIT · Haïti",
+      "statut": "redaction",
+      "priorite": "haute",
+      "resume": "Note conceptuelle conjointe pour le Fonds des Nations Unies pour la sécurité humaine, fenêtre I, ciblant Corail (Grand'Anse). Trois composantes : gouvernance communautaire et intelligence territoriale, sécurité alimentaire et moyens d'existence, emplois verts.",
+      "prochaine": "Orienter l'approche intégrée vers la pêche ou la restauration des mangroves",
+      "echeance": "",
+      "taches": [
+        {"t": "Choisir la zone d'intervention (Corail)", "f": true},
+        {"t": "Réécrire la composante 1 (intelligence territoriale)", "f": false},
+        {"t": "Restructurer les composantes 2 et 3", "f": false},
+        {"t": "Finir le cours UNSSC sur l'approche de sécurité humaine", "f": false},
+        {"t": "Préparer une candidature APRI pour la fenêtre II", "f": false}
+      ],
+      "notes": ""
+    },
+    {
+      "id": "kbf",
+      "nom": "KBF",
+      "partenaires": "À compléter",
+      "statut": "idee",
+      "priorite": "moyenne",
+      "resume": "À compléter : objet du projet, bailleur, zone.",
+      "prochaine": "Définir l'objet et les prochaines étapes",
+      "echeance": "",
+      "taches": [],
+      "notes": ""
+    },
+    {
+      "id": "gfc",
+      "nom": "Cadre mondial sur les produits chimiques · GFC Haïti",
+      "partenaires": "PNUE · Ministère de l'Environnement d'Haïti",
+      "statut": "finalisation",
+      "priorite": "haute",
+      "resume": "Proposition de projet coformulée avec le Ministère de l'Environnement, approuvée fin septembre 2026, en cours de finalisation.",
+      "prochaine": "Répondre aux quatre observations du Conseil exécutif",
+      "echeance": "2026-11-16",
+      "echeanceLabel": "Conférence internationale GFC (IC.1), Genève, 16 au 20 novembre",
+      "taches": [
+        {"t": "Proposition approuvée", "f": true},
+        {"t": "Réponse aux quatre observations du Conseil exécutif", "f": false},
+        {"t": "Réunion de finalisation avec le Ministère", "f": false},
+        {"t": "Autorisation de voyage pour Genève", "f": false}
+      ],
+      "notes": ""
+    }
+  ]
+}
