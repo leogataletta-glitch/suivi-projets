@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "projets": [
     {
       "id": "untfhs",
@@ -11,13 +11,45 @@
       "prochaine": "Orienter l'approche intégrée vers la pêche ou la restauration des mangroves",
       "echeance": "",
       "taches": [
-        {"t": "Choisir la zone d'intervention (Corail)", "f": true},
-        {"t": "Réécrire la composante 1 (intelligence territoriale)", "f": false},
-        {"t": "Restructurer les composantes 2 et 3", "f": false},
-        {"t": "Finir le cours UNSSC sur l'approche de sécurité humaine", "f": false},
-        {"t": "Préparer une candidature APRI pour la fenêtre II", "f": false}
+        {
+          "t": "Choisir la zone d'intervention (Corail)",
+          "f": true,
+          "d": ""
+        },
+        {
+          "t": "Réécrire la composante 1 (intelligence territoriale)",
+          "f": false,
+          "d": ""
+        },
+        {
+          "t": "Restructurer les composantes 2 et 3",
+          "f": false,
+          "d": ""
+        },
+        {
+          "t": "Finir le cours UNSSC sur l'approche de sécurité humaine",
+          "f": false,
+          "d": ""
+        },
+        {
+          "t": "Préparer une candidature APRI pour la fenêtre II",
+          "f": false,
+          "d": ""
+        }
       ],
-      "notes": ""
+      "notes": "",
+      "motsCles": [
+        "untfhs",
+        "securite humaine",
+        "human security",
+        "fonds pour la securite humaine",
+        "corail",
+        "composante",
+        "fenetre",
+        "unssc"
+      ],
+      "couleur": "#1d5a80",
+      "journal": []
     },
     {
       "id": "kbf",
@@ -29,7 +61,12 @@
       "prochaine": "Définir l'objet et les prochaines étapes",
       "echeance": "",
       "taches": [],
-      "notes": ""
+      "notes": "",
+      "motsCles": [
+        "kbf"
+      ],
+      "couleur": "#7a3e8a",
+      "journal": []
     },
     {
       "id": "gfc",
@@ -42,12 +79,38 @@
       "echeance": "2026-11-16",
       "echeanceLabel": "Conférence internationale GFC (IC.1), Genève, 16 au 20 novembre",
       "taches": [
-        {"t": "Proposition approuvée", "f": true},
-        {"t": "Réponse aux quatre observations du Conseil exécutif", "f": false},
-        {"t": "Réunion de finalisation avec le Ministère", "f": false},
-        {"t": "Autorisation de voyage pour Genève", "f": false}
+        {
+          "t": "Proposition approuvée",
+          "f": true,
+          "d": ""
+        },
+        {
+          "t": "Réponse aux quatre observations du Conseil exécutif",
+          "f": false,
+          "d": ""
+        },
+        {
+          "t": "Réunion de finalisation avec le Ministère",
+          "f": false,
+          "d": ""
+        },
+        {
+          "t": "Autorisation de voyage pour Genève",
+          "f": false,
+          "d": ""
+        }
       ],
-      "notes": ""
+      "notes": "",
+      "motsCles": [
+        "gfc",
+        "chimiques",
+        "produits chimiques",
+        "geneve",
+        "conseil executif",
+        "ic.1"
+      ],
+      "couleur": "#8a5a12",
+      "journal": []
     }
   ]
 }
