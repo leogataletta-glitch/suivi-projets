@@ -414,7 +414,7 @@ function selectWorkspace(view){
  if(workspaceView==='projects')previousWorkspace=active;
  workspaceView=view;$('home').hidden=true;$('detail').classList.remove('show');$('break-panel').hidden=view!=='break';$('weight-panel').hidden=view!=='weight';
  ['projects','break','weight'].forEach(key=>$(key+'-tab').setAttribute('aria-pressed',String(key===view)));
- if(view==='projects'){if(previousWorkspace&&data.projets.some(p=>p.id===previousWorkspace))openProject(previousWorkspace);else home()}
+ if(view==='projects'){previousWorkspace=null;home();window.scrollTo({top:0,behavior:'instant'})}
  if(view==='weight')renderWeightDay();
 }
 $('projects-tab').onclick=()=>selectWorkspace('projects');$('break-tab').onclick=()=>selectWorkspace('break');$('weight-tab').onclick=()=>selectWorkspace('weight');
