@@ -1,4 +1,17 @@
 /* Compact journal layout; all rules stay inside the weight tab. */
+#weight-panel .food-suggest-wrap{position:relative;min-width:0}
+#weight-panel .food-suggestions{position:absolute;top:0;left:0;right:0;z-index:30;max-height:300px;overflow-y:auto;border:1px solid var(--line);border-radius:9px;background:#fff;box-shadow:0 8px 24px #0003}
+#weight-panel .food-suggestions button{display:flex;justify-content:space-between;gap:12px;width:100%;text-align:left;border:0;border-radius:0;background:transparent;padding:9px 10px;min-height:40px}
+#weight-panel .food-suggestions small{white-space:nowrap;opacity:.7}
+#weight-panel .food-suggestions button:hover,#weight-panel .food-suggestions [aria-selected=true]{background:#e3edfb}
+html.theme-dark #weight-panel .food-suggestions{background:#20252d;border-color:#39424e}
+html.theme-dark #weight-panel .food-suggestions button{color:#d9e3ef}
+html.theme-dark #weight-panel .food-suggestions button:hover,html.theme-dark #weight-panel .food-suggestions [aria-selected=true]{background:#34465d}
+#weight-panel .food-suggest-wrap>p:empty{display:none}
+#weight-panel .food-custom{margin:10px 0}
+#weight-panel .food-custom-fields{display:grid;grid-template-columns:2fr 1fr 1fr;gap:8px;margin-top:10px}
+#weight-panel .food-custom-fields button{grid-column:1/-1;justify-self:start}
+@media(max-width:500px){#weight-panel .food-custom-fields{grid-template-columns:1fr}#weight-panel .food-suggestions small{font-size:10px}}
 #wcal-link-title,#wcal-link-help,#wcal-scatter,#wcal-stats{display:none}
 #weight-panel #daily-weight-table{grid-column:1/-1}
 #daily-weight-table table{min-width:760px;font-size:12px}
