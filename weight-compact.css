@@ -1,6 +1,8 @@
 /* Compact journal layout; all rules stay inside the weight tab. */
 #weight-panel>.weight-heading>div:first-child,
 #weight-panel>[data-wt="privacy"]{display:none}
+#weight-panel>.weight-card:has(#weekly-span),
+#weight-panel>.weight-card:has(#gym-averages){display:none}
 #weight-panel .weight-heading{gap:10px}
 #weight-panel h2{font-size:25px}
 #weight-panel .eyebrow{margin-bottom:2px}
