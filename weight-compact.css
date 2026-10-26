@@ -1,4 +1,5 @@
 /* Compact journal layout; all rules stay inside the weight tab. */
+#weight-panel{max-width:1400px;margin-left:auto;margin-right:auto}
 #weight-panel>.weight-heading>div:first-child,
 #weight-panel>[data-wt="privacy"]{display:none}
 #weight-panel>.weight-card:has(#weekly-span),
@@ -11,7 +12,7 @@
 #weight-panel .weight-card{padding:14px 16px;margin-bottom:12px;border-radius:14px;box-shadow:none;min-width:0}
 #weight-panel .weight-muted{margin:6px 0 10px;line-height:1.45}
 #weight-panel .weight-columns{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
-#weight-panel>.weight-columns{align-items:stretch}
+#weight-panel>.weight-columns{align-items:start}
 #weight-panel label{gap:4px}
 #weight-panel input,#weight-panel select,#weight-panel textarea{padding:8px 10px;border-radius:8px}
 #weight-panel button{padding:8px 11px;border-radius:8px;min-height:36px}
@@ -57,12 +58,18 @@
 #weight-panel .gym-average{padding:10px 12px;margin-bottom:10px;border-radius:9px}
 #weight-panel .weight-table :is(td,th){padding:8px 10px}
 @media(min-width:1100px){
- #weight-panel:not([hidden]){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 14px;align-items:start}
+ #weight-panel:not([hidden]){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr) minmax(0,1.15fr) minmax(0,1.1fr);gap:0 12px;align-items:start}
  #weight-panel>*{grid-column:1/-1}
- #weight-panel>.macro-card{grid-column:1}
- #weight-panel>.gym-controls{grid-column:2;align-self:stretch}
- #weight-panel>.weight-card:has(#quick-food-form){grid-column:1}
- #weight-panel>.wcal-card{grid-column:2}
+ #weight-panel>.weight-columns{display:contents}
+ #weight-panel>.weight-columns>.weight-card{grid-column:auto}
+ #weight-panel>.macro-card{grid-column:auto}
+ #weight-panel>.gym-controls{grid-column:auto;align-self:start;gap:8px}
+ #weight-panel>.weight-card:has(#quick-food-form){grid-column:1 / span 2}
+ #weight-panel>.wcal-card{grid-column:3 / span 2}
+ #weight-panel>.weight-columns>.weight-card,#weight-panel>.macro-card,#weight-panel>.gym-controls{padding:12px}
+ #weight-panel .macro-item{padding:0 4px;column-gap:4px}
+ #weight-panel .macro-item span{font-size:11px;overflow-wrap:anywhere}
+ #weight-panel .gym-complete{min-width:0;flex-basis:100%}
 }
 @media(max-width:460px){
  #weight-panel .weight-card{padding:12px}
