@@ -1,6 +1,6 @@
 /* Local multilingual search and parsing. No food descriptions are sent online. */
 (()=>{
- const normalize=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/œ/g,'oe').replace(/[’']/g,' ').replace(/[^a-z0-9.,;\n+ /%-]/g,' ').replace(/[ \t]+/g,' ').trim();
+ const normalize=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/œ/g,'oe').replace(/[’'–-]/g,' ').replace(/[^a-z0-9.,;\n+ /%]/g,' ').replace(/[ \t]+/g,' ').trim();
  const escape=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
  const boundary=(text,word)=>new RegExp('(^|[^a-z])'+escape(word)+'([^a-z]|$)').test(text);
  const split=/\s*(?:[,;\n+]|\by\b|\bet\b|\band\b|\bcon\b|\bavec\b|\bwith\b)\s*/;
@@ -9,8 +9,9 @@
   return catalog.map(food=>{const local=normalize(food.label[idx]),aliases=food.aliases.map(normalize);let score=local.startsWith(q)?0:local.split(' ').some(w=>w.startsWith(q))?1:aliases.some(a=>a.startsWith(q))?2:aliases.some(a=>a.split(' ').some(w=>w.startsWith(q)))?3:99;return {food,score}}).filter(m=>m.score<99).sort((a,b)=>a.score-b.score||a.food.label[idx].localeCompare(b.food.label[idx],lang)).slice(0,10).map(m=>m.food);
  }
  function parse(text,catalog){
+  if(/(^|[\s,;+])-\s*\d/.test(text))return {items:[],unknown:[text]};
   const numbers={un:1,une:1,uno:1,una:1,one:1,deux:2,dos:2,two:2,trois:3,tres:3,three:3,quatre:4,cuatro:4,four:4,cinq:5,cinco:5,five:5,demi:.5,medio:.5,media:.5,half:.5};
-  let normalized=normalize(text.replace(/(\d),(\d)/g,'$1.$2')).replace(/\b(un|une|uno|una|one|deux|dos|two|trois|tres|three|quatre|cuatro|four|cinq|cinco|five|demi|medio|media|half)\b/g,w=>numbers[w]).replace(/(\d+)\s*\/\s*(\d+)/g,(_,a,b)=>+b?+a/+b:'invalid');
+  let normalized=normalize(text.replace(/(\d),(\d)/g,'$1.$2')).replace(/(^|[,;\n+]|\b(?:y|et|and|con|avec|with)\b)\s*(un|une|uno|una|one|deux|dos|two|trois|tres|three|quatre|cuatro|four|cinq|cinco|five|demi|medio|media|half)\b/g,(_,prefix,w)=>prefix+' '+numbers[w]).replace(/(\d+)\s*\/\s*(\d+)/g,(_,a,b)=>+b?+a/+b:'invalid');
   const protectedAliases=[];
   for(const alias of catalog.flatMap(f=>f.aliases.map(normalize)).filter(a=>a.split(split).length>1).sort((a,b)=>b.length-a.length)){const token='suivialias'+protectedAliases.length+'token';if(boundary(normalized,alias)){normalized=normalized.replace(new RegExp('(^|[^a-z])'+escape(alias)+'(?=[^a-z]|$)','g'),(_,prefix)=>prefix+token);protectedAliases.push([token,alias])}}
   const items=[],unknown=[];
