@@ -1,4 +1,9 @@
 /* Compact journal layout; all rules stay inside the weight tab. */
+#weight-panel .food-quantity-picker{display:flex;align-items:end;flex-wrap:wrap;gap:8px;padding:10px;margin:6px 0;border:1px solid var(--line);border-radius:9px}
+#weight-panel .food-quantity-picker>strong{flex-basis:100%;font-size:13px}
+#weight-panel .food-quantity-picker input{width:90px}
+#weight-panel .food-quantity-picker select{max-width:220px}
+#weight-panel .food-quantity-picker[hidden]{display:none}
 #weight-panel .food-suggest-wrap{position:relative;min-width:0}
 #weight-panel .food-suggestions{position:absolute;top:0;left:0;right:0;z-index:30;max-height:300px;overflow-y:auto;border:1px solid var(--line);border-radius:9px;background:#fff;box-shadow:0 8px 24px #0003}
 #weight-panel .food-suggestions button{display:flex;justify-content:space-between;gap:12px;width:100%;text-align:left;border:0;border-radius:0;background:transparent;padding:9px 10px;min-height:40px}
