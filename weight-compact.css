@@ -1,4 +1,10 @@
 /* Compact journal layout; all rules stay inside the weight tab. */
+#wcal-link-title,#wcal-link-help,#wcal-scatter,#wcal-stats{display:none}
+#weight-panel #daily-weight-table{grid-column:1/-1}
+#daily-weight-table table{min-width:760px;font-size:12px}
+#daily-weight-table td{font-variant-numeric:tabular-nums;white-space:nowrap}
+#daily-weight-table caption{text-align:left;caption-side:bottom;padding:6px 0}
+#daily-weight-table .daily-weight-summary{margin:0 0 12px;line-height:1.5}
 #weight-panel{max-width:1400px;margin-left:auto;margin-right:auto}
 #weight-panel>.weight-heading>div:first-child,
 #weight-panel>[data-wt="privacy"]{display:none}

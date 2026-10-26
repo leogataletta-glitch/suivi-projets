@@ -42,7 +42,7 @@ const toB64=buf=>btoa(String.fromCharCode(...new Uint8Array(buf)));
 let pack;
 async function getPack(){if(!pack){const r=await fetch('app.enc.json',{cache:'no-store'});if(!r.ok)throw new Error('fetch');pack=await r.json()}return pack}
 async function keyFromPassword(pw,p){const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(p.salt),iterations:p.iter,hash:'SHA-256'},base,{name:'AES-GCM',length:256},true,['decrypt'])}
-async function open(key){const p=await getPack();const plain=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(p.iv)},key,b64(p.ct));const html=new TextDecoder().decode(plain).replace(/<\/head>/i,'<link rel="stylesheet" href="weight-compact.css?v=4"></head>');document.open();document.write(html);document.close()}
+async function open(key){const p=await getPack();const plain=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(p.iv)},key,b64(p.ct));const html=new TextDecoder().decode(plain).replace(/<\/head>/i,'<link rel="stylesheet" href="weight-compact.css?v=5"></head>').replace(/<\/body>/i,'<script src="weight-daily.js?v=1"></scr'+'ipt></body>');document.open();document.write(html);document.close()}
 try{const saved=localStorage.getItem(KEYSTORE);if(saved){const key=await crypto.subtle.importKey('raw',b64(saved),'AES-GCM',true,['decrypt']);await open(key);return}}catch(e){try{localStorage.removeItem(KEYSTORE)}catch(_){}}
 $('f').hidden=false;$('pw').focus();
 $('f').onsubmit=async e=>{e.preventDefault();$('go').disabled=true;$('msg').textContent='';
